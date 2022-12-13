@@ -6,12 +6,13 @@ import { pegarRepositoriosDoUsuario } from '../../servicos/requisicoes/repositor
 export default function Repositorios({ route, navigation }) {
     const [repo, setRepo] = useState([]);
 
-    useEffect(async () => {
-        const resultado = await pegarRepositoriosDoUsuario(route.params.id);
-        console.log('**************************');
-        console.log(resultado);
-        console.log('**************************');
-        setRepo(resultado);
+    useEffect(() => {
+        async function fetchData() {
+            const resultado = await pegarRepositoriosDoUsuario(route.params.id);
+            setRepo(resultado);
+        }
+
+        fetchData();
     }, [])
 
     return (
