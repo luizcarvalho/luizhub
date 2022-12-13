@@ -10,3 +10,14 @@ export async function pegarRepositoriosDoUsuario(id) {
         return [];
     }
 }
+
+export async function salvarRepositoriosDoUsuario(nome, data, postId, id) {
+    try {
+        await api.put(`/repos/${id}`, { name: nome, data: data, postId: postId, id: id });
+
+        return 'sucesso';
+    } catch (error) {
+        console.log(error);
+        return 'erro';
+    }
+}
